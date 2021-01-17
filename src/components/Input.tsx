@@ -1,8 +1,10 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback, useContext } from "react";
 import { Platform } from "react-native";
 import { Input as NativeInput, InputProps as NativeInputProps } from "react-native-elements";
 
 import useColors from "../hooks/useColors";
+
+import { GlobalContext } from "../context/GlobalContext";
 
 export interface Validation {
     regexp: RegExp;
@@ -21,7 +23,11 @@ export interface InputProps extends NativeInputProps {
 const Input: FC<InputProps> = props => {
     const { textDark, textMedium, textLight } = useColors();
     const size = props.size || "normal";
-    const color = props.color || textDark;
+    // const color = props.color || textDark;
+
+    const { darkMode } = useContext(GlobalContext);
+    const color = props.color || darkMode ? "#FFFFFF" : "#333333";
+
     const fontSize = size === "small" ? 16 : size === "large" ? 24 : 20;
     const onChangeText = useCallback(
         (text: string) => {

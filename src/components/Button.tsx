@@ -31,7 +31,8 @@ const Button: FC<ButtonProps> = props => {
                     height,
                     paddingHorizontal: Spacing.small,
                     backgroundColor: "transparent",
-                    borderColor: color
+                    borderColor: color,
+                    borderWidth: 1
                 },
                 props.buttonStyle
             ]}

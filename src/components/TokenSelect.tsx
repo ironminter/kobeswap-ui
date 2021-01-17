@@ -22,6 +22,8 @@ import TokenSearch from "./TokenSearch";
 import TokenSymbol from "./TokenSymbol";
 import TokenValue from "./TokenValue";
 
+import { GlobalContext } from "../context/GlobalContext";
+
 export interface TokenSelectProps {
     title: string;
     symbol: string;
@@ -117,6 +119,9 @@ const TokenItem = (props: {
     const onPress = useCallback(() => {
         props.onSelectToken(props.token);
     }, [props.onSelectToken, props.token]);
+
+    const { darkMode } = useContext(GlobalContext);
+
     return (
         <Selectable
             selected={props.selected}
@@ -143,7 +148,11 @@ const TokenItem = (props: {
                         <TokenAmount
                             token={props.token}
                             disabled={props.disabled}
-                            style={{ flex: 1, textAlign: "right" }}
+                            style={{ 
+                                flex: 1, 
+                                textAlign: "right",
+                                color: darkMode ? "#FFFFFF" : "#333333"
+                            }}
                         />
                         {IS_DESKTOP && <TokenSymbol token={props.token} disabled={props.disabled} />}
                     </FlexView>

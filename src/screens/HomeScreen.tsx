@@ -30,6 +30,9 @@ import TokenWithValue from "../types/TokenWithValue";
 import { formatUSD } from "../utils";
 import Screen from "./Screen";
 
+import { GlobalContext } from "../context/GlobalContext";
+import { ImageBackground, StyleSheet } from "react-native";
+
 interface TokenItemProps {
     token: TokenWithValue;
     disabled?: boolean;
@@ -46,20 +49,42 @@ const HomeScreen = () => {
     const { loadingTokens } = useContext(EthersContext);
     const loading = loadingTokens || state.loadingLPTokens || state.loadingPools;
     const totalValue = sum(state.tokens) + sum(state.lpTokens) + sum(state.pools);
+
+    const { darkMode } = useContext(GlobalContext);
+    const image = { uri: require("../../assets/bg.jpeg") };
+    const image2 = { uri: require("../../assets/bg2.jpeg") };
+
+    const styles = StyleSheet.create({
+        image: {
+            // flex: 1,
+            // resizeMode: "cover",
+            // justifyContent: "center"
+            // width: "100%",
+            // height: "100%"
+        },
+    });
+
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
-                <Content style={{ paddingBottom: Spacing.huge }}>
-                    <Title text={t("total-value")} style={{ flex: 1 }} />
-                    <Title
-                        text={loading ? t("fetching") : formatUSD(totalValue, 4)}
-                        fontWeight={"light"}
-                        disabled={loading}
-                        style={{ fontSize: IS_DESKTOP ? 32 : 24 }}
-                    />
-                    <Home state={state} />
-                </Content>
+                {/* <BackgroundImage /> */}
+                <ImageBackground source={darkMode ? image2 : image} style={styles.image}>
+                    <Content style={{ paddingBottom: Spacing.huge }}>
+                        <Title text={t("total-value")} style={{ flex: 1 }} />
+                        <Title
+                            text={loading ? t("fetching") : formatUSD(totalValue, 4)}
+                            fontWeight={"light"}
+                            disabled={loading}
+                            style={{
+                                fontSize: IS_DESKTOP ? 32 : 24,
+                                color: "#FF3333"
+                            }}
+                        />
+                        <Home state={state} />
+                    </Content>
+                </ImageBackground>
+
+
                 {Platform.OS === "web" && <WebFooter />}
             </Container>
         </Screen>
@@ -135,13 +160,13 @@ const TokenList = (props: {
     ) : data.length === 0 ? (
         <EmptyList />
     ) : (
-        <FlatList
-            keyExtractor={item => item.address}
-            data={data}
-            renderItem={renderItem}
-            ItemSeparatorComponent={() => <Border small={true} />}
-        />
-    );
+                <FlatList
+                    keyExtractor={item => item.address}
+                    data={data}
+                    renderItem={renderItem}
+                    ItemSeparatorComponent={() => <Border small={true} />}
+                />
+            );
 };
 
 const EmptyList = () => {

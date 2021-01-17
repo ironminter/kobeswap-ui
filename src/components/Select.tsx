@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { View } from "react-native";
 
 import { Spacing } from "../constants/dimension";
@@ -9,6 +9,8 @@ import { ITEM_SEPARATOR_HEIGHT } from "./ItemSeparator";
 import Selectable from "./Selectable";
 import SelectIcon from "./SelectIcon";
 import Text from "./Text";
+
+import { GlobalContext } from "../context/GlobalContext";
 
 export interface Option {
     key: string;
@@ -49,6 +51,9 @@ const Item = (props: {
     selected: boolean;
     selectable?: boolean;
 }) => {
+
+    const { darkMode } = useContext(GlobalContext);
+
     return (
         <Selectable
             containerStyle={{ marginBottom: ITEM_SEPARATOR_HEIGHT }}
@@ -58,8 +63,13 @@ const Item = (props: {
             onPress={() => props.setOption?.(props.selected ? undefined : props.option)}>
             <FlexView style={{ alignItems: "center" }}>
                 <View style={{ flex: 1 }}>
-                    <Text fontWeight={"regular"}>{props.option.title}</Text>
-                    <Text note={true} style={{ marginTop: 4 }}>
+                    <Text fontWeight={"regular"} style={{
+                        color: darkMode ? "#4B607E" : "#333333"
+                    }}>{props.option.title}</Text>
+                    <Text note={true} style={{
+                        marginTop: 4,
+                        color: darkMode ? "#AAAAAA" : "#333333"
+                    }}>
                         {props.option.description}
                     </Text>
                 </View>

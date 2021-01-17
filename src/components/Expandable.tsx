@@ -1,8 +1,10 @@
-import React, { FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, useContext, useState } from "react";
 import { View, ViewStyle } from "react-native";
 
 import useTranslation from "../hooks/useTranslation";
 import Heading from "./Heading";
+
+import { GlobalContext } from "../context/GlobalContext";
 
 export interface ExpandableProps {
     title: string;
@@ -22,9 +24,13 @@ const Expandable: FC<ExpandableProps> = props => {
         props.onExpand?.();
     };
 
+    const { darkMode } = useContext(GlobalContext);
+
     return (
         <View style={props.style}>
-            <Heading text={props.title} buttonText={buttonText} onPressButton={onPress} />
+            <Heading text={props.title} buttonText={buttonText} onPressButton={onPress} style={{
+                color: darkMode ? "#FFFFFF" : "#333333"
+            }}/>
             <View style={{ display: shouldExpand ? "flex" : "none" }}>{props.children}</View>
         </View>
     );

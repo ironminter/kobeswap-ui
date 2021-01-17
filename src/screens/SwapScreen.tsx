@@ -40,15 +40,22 @@ import Token from "../types/Token";
 import { formatBalance, isEmptyValue, isETH, isETHWETHPair, isWETH, parseBalance } from "../utils";
 import Screen from "./Screen";
 
+import { GlobalContext } from "../context/GlobalContext";
+
 const SwapScreen = () => {
     const t = useTranslation();
+    const { darkMode } = useContext(GlobalContext);
     return (
         <Screen>
             <Container>
                 <BackgroundImage />
                 <Content>
-                    <Title text={t("new-order")} />
-                    <Text light={true}>{t("new-order-desc")}</Text>
+                    <Title text={t("new-order")} style={{
+                        color: darkMode ? "#FFFFFF" : "#333333"
+                    }} />
+                    <Text light={true} style={{
+                        color: darkMode ? "#4B607E" : "#333333"
+                    }}>{t("new-order-desc")}</Text>
                     <Swap />
                 </Content>
                 {Platform.OS === "web" && <WebFooter />}
@@ -189,9 +196,9 @@ const AmountNotice = ({ state }: { state: SwapState }) => {
                     state.priceInETH === null
                         ? t("token-not-supported-in-beta")
                         : t("maximum-allowed-amount-in-beta", {
-                              amount: formatBalance(state.priceInETH.mul(10), state.fromToken!.decimals),
-                              symbol: state.fromSymbol
-                          })
+                            amount: formatBalance(state.priceInETH.mul(10), state.fromToken!.decimals),
+                            symbol: state.fromSymbol
+                        })
                 }
                 color={"red"}
             />
@@ -263,8 +270,8 @@ const TradeInfo = ({ state }: { state: SwapState }) => {
             {state.orderType === "limit" ? (
                 <LimitOrderInfo state={state} />
             ) : (
-                <SwapInfo state={state} disabled={disabled} />
-            )}
+                    <SwapInfo state={state} disabled={disabled} />
+                )}
         </InfoBox>
     );
 };
@@ -310,32 +317,32 @@ const SwapControls = ({ state }: { state: SwapState }) => {
     return (
         <View style={{ marginTop: Spacing.normal }}>
             {!state.fromToken ||
-            !state.toToken ||
-            isEmptyValue(state.fromAmount) ||
-            (!state.loading && !state.trade) ? (
-                <SwapButton state={state} onError={setError} disabled={true} />
-            ) : parseBalance(state.fromAmount, state.fromToken.decimals).gt(state.fromToken.balance) ? (
-                <InsufficientBalanceButton symbol={state.fromSymbol} />
-            ) : isWETH(state.fromToken) && isETH(state.toToken) ? (
-                <UnwrapButton state={state} onError={setError} />
-            ) : isETH(state.fromToken) && isWETH(state.toToken) ? (
-                <WrapButton state={state} onError={setError} />
-            ) : state.unsupported ? (
-                <UnsupportedButton state={state} />
-            ) : state.loading || !state.trade ? (
-                <FetchingButton />
-            ) : (
-                <>
-                    <ApproveButton
-                        token={state.fromToken}
-                        spender={ROUTER}
-                        onSuccess={() => state.setFromTokenAllowed(true)}
-                        onError={setError}
-                        hidden={!approveRequired}
-                    />
-                    <SwapButton state={state} onError={setError} disabled={approveRequired} />
-                </>
-            )}
+                !state.toToken ||
+                isEmptyValue(state.fromAmount) ||
+                (!state.loading && !state.trade) ? (
+                    <SwapButton state={state} onError={setError} disabled={true} />
+                ) : parseBalance(state.fromAmount, state.fromToken.decimals).gt(state.fromToken.balance) ? (
+                    <InsufficientBalanceButton symbol={state.fromSymbol} />
+                ) : isWETH(state.fromToken) && isETH(state.toToken) ? (
+                    <UnwrapButton state={state} onError={setError} />
+                ) : isETH(state.fromToken) && isWETH(state.toToken) ? (
+                    <WrapButton state={state} onError={setError} />
+                ) : state.unsupported ? (
+                    <UnsupportedButton state={state} />
+                ) : state.loading || !state.trade ? (
+                    <FetchingButton />
+                ) : (
+                                        <>
+                                            <ApproveButton
+                                                token={state.fromToken}
+                                                spender={ROUTER}
+                                                onSuccess={() => state.setFromTokenAllowed(true)}
+                                                onError={setError}
+                                                hidden={!approveRequired}
+                                            />
+                                            <SwapButton state={state} onError={setError} disabled={approveRequired} />
+                                        </>
+                                    )}
             {error.message && error.code !== 4001 && <ErrorMessage error={error} />}
         </View>
     );
@@ -435,25 +442,25 @@ const LimitOrderControls = ({ state }: { state: SwapState }) => {
             ) : parseBalance(state.fromAmount, state.fromToken!.decimals).gt(state.fromToken!.balance) ? (
                 <InsufficientBalanceButton symbol={state.fromSymbol} />
             ) : !Fraction.parse(state.limitOrderPrice).gt(
-                  Fraction.parse(state.trade!.executionPrice.invert().toFixed(state.toToken!.decimals))
-              ) ? (
-                <PriceTooLowButton />
-            ) : state.unsupported ? (
-                <UnsupportedButton state={state} />
-            ) : state.loading || !state.trade ? (
-                <FetchingButton />
-            ) : (
-                <>
-                    <ApproveButton
-                        token={state.fromToken!}
-                        spender={SETTLEMENT}
-                        onSuccess={() => setAllowed(true)}
-                        onError={setError}
-                        hidden={allowed}
-                    />
-                    <PlaceOrderButton state={state} onError={setError} disabled={!allowed} />
-                </>
-            )}
+                Fraction.parse(state.trade!.executionPrice.invert().toFixed(state.toToken!.decimals))
+            ) ? (
+                            <PriceTooLowButton />
+                        ) : state.unsupported ? (
+                            <UnsupportedButton state={state} />
+                        ) : state.loading || !state.trade ? (
+                            <FetchingButton />
+                        ) : (
+                                    <>
+                                        <ApproveButton
+                                            token={state.fromToken!}
+                                            spender={SETTLEMENT}
+                                            onSuccess={() => setAllowed(true)}
+                                            onError={setError}
+                                            hidden={allowed}
+                                        />
+                                        <PlaceOrderButton state={state} onError={setError} disabled={!allowed} />
+                                    </>
+                                )}
             {error.message && error.code !== 4001 && <ErrorMessage error={error} />}
         </View>
     );
