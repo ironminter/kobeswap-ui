@@ -48,7 +48,7 @@ const SwapScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("new-order")} style={{
                         color: darkMode ? "#FFFFFF" : "#333333"
@@ -58,7 +58,10 @@ const SwapScreen = () => {
                     }}>{t("new-order-desc")}</Text>
                     <Swap />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <SwapSubMenu />
         </Screen>

@@ -68,24 +68,27 @@ const HomeScreen = () => {
         <Screen>
             <Container>
                 {/* <BackgroundImage /> */}
-                <ImageBackground source={darkMode ? image2 : image} style={styles.image}>
-                    <Content style={{ paddingBottom: Spacing.huge }}>
-                        <Title text={t("total-value")} style={{ flex: 1 }} />
-                        <Title
-                            text={loading ? t("fetching") : formatUSD(totalValue, 4)}
-                            fontWeight={"light"}
-                            disabled={loading}
-                            style={{
-                                fontSize: IS_DESKTOP ? 32 : 24,
-                                color: "#FF3333"
-                            }}
-                        />
-                        <Home state={state} />
-                    </Content>
-                </ImageBackground>
+                {/* <ImageBackground source={darkMode ? image2 : image} style={styles.image}> */}
+                <Content style={{ paddingBottom: Spacing.huge }}>
+                    <Title text={t("total-value")} style={{ flex: 1 }} />
+                    <Title
+                        text={loading ? t("fetching") : formatUSD(totalValue, 4)}
+                        fontWeight={"light"}
+                        disabled={loading}
+                        style={{
+                            fontSize: IS_DESKTOP ? 32 : 24,
+                            color: "#FF3333"
+                        }}
+                    />
+                    <Home state={state} />
+                </Content>
+                {/* </ImageBackground> */}
 
 
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
         </Screen>
     );

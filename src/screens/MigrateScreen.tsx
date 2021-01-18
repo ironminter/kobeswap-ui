@@ -36,13 +36,16 @@ const MigrateScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("migrate-liquidity")} />
                     <Text light={true}>{t("migrate-liquidity-desc")}</Text>
                     <Migrate />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <MigrateSubMenu />
         </Screen>

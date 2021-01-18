@@ -46,13 +46,16 @@ const LiquidityScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("add-liquidity")} />
                     <Text light={true}>{t("add-liquidity-desc")}</Text>
                     <AddLiquidity />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <LiquiditySubMenu />
         </Screen>

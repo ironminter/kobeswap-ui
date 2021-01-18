@@ -34,13 +34,16 @@ const StakeScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("stake")} />
                     <Text light={true}>{t("stake-desc")}</Text>
                     <Staking />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <StakingSubMenu />
         </Screen>

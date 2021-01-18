@@ -43,13 +43,16 @@ const FarmingScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("plant-lp-tokens")} />
                     <Text light={true}>{t("plant-lp-tokens-desc")}</Text>
                     <Farming />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <FarmingSubMenu />
         </Screen>

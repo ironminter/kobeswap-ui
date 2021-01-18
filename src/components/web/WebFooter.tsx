@@ -9,6 +9,7 @@ import useLinker from "../../hooks/useLinker";
 import FlexView from "../FlexView";
 import SocialIcons from "../SocialIcons";
 import Text from "../Text";
+import useColors from "../../hooks/useColors";
 
 const FLAGS = {
     us: require("../../../assets/flags/us.png"),
@@ -23,21 +24,29 @@ const ALCHEMY_URL = "https://dashboard.alchemyapi.io/signup?referral=429fb682-0d
 
 const WebFooter = ({ simple = false }) => {
     const onPressAlchemy = useLinker(ALCHEMY_URL, "", "_blank");
+    const { header, borderDark } = useColors();
     return (
-        <View style={{ width: "100%", padding: Spacing.normal, alignItems: "center" }}>
+        <View style={{
+            width: "100%",
+            padding: Spacing.normal,
+            alignItems: "center",
+            position: "fixed",
+            bottom: 0,
+            backgroundColor: header
+        }}>
             {!simple && (
                 <>
                     <SocialIcons />
-                    <TouchableHighlight onPress={onPressAlchemy}>
+                    {/* <TouchableHighlight onPress={onPressAlchemy}>
                         <Image
                             source={require("../../../assets/alchemy.png")}
                             style={{ width: 188, height: 40, marginTop: Spacing.tiny }}
                         />
-                    </TouchableHighlight>
+                    </TouchableHighlight> */}
                 </>
             )}
             <Text note={true} style={{ marginTop: Spacing.tiny }}>
-                Built with ❤️ by SushiSwap (v{Constants.manifest.version})
+                Built with ❤️ by KobeSwap (v{Constants.manifest.version})
             </Text>
             <FlexView style={{ marginTop: Spacing.small }}>
                 <Flag name={"us"} locale={"en"} />
