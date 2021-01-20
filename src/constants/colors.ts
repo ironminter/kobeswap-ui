@@ -11,7 +11,7 @@ export const Colors = {
     },
     light: {
         accent: "#FA52A0",
-        header: "#ffffffb8",
+        header: "#ffffff",
         submenu: "#ffffff80",
         background: "#ffffff",
         backgroundLight: "#f0f0f0",
@@ -22,7 +22,7 @@ export const Colors = {
         textLight: "#000000",
         disabled: "#b4b4b4",
         shadow: "#444444",
-        placeholder: "#b4b4b4",
+        placeholder: "#666666",
         overlay: "#ffffffc0"
     },
     dark: {

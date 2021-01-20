@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react";
-import { TouchableHighlight, View } from "react-native";
+import { Image, TouchableHighlight, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -20,6 +20,7 @@ export interface WebHeaderProps {
 
 const WebHeader: FC<WebHeaderProps> = props => {
     const { header, borderDark } = useColors();
+
     return (
         <View
             // @ts-ignore
@@ -45,6 +46,7 @@ const WebHeader: FC<WebHeaderProps> = props => {
                     paddingHorizontal: Spacing.normal
                 }}>
                 <Title />
+                
                 {IS_DESKTOP ? <Menu /> : <MenuIcon onExpand={props.onExpandMenu} />}
             </FlexView>
         </View>
@@ -53,11 +55,25 @@ const WebHeader: FC<WebHeaderProps> = props => {
 
 export const Title = () => {
     const { darkMode } = useContext(GlobalContext);
-    const SvgLogo = darkMode ? SvgLogoDark : SvgLogoLight;
+
+    const logo1 = { uri: require("../../../assets/logo-1.png") };
+    const logo2 = { uri: require("../../../assets/logo-2.png") };
+
+    const SvgLogo = darkMode ? logo1 : logo2;
+    
     return (
         <View style={{ alignSelf: "center" }}>
             <Link to={"/"} style={{ textDecoration: "none" }}>
-                <SvgLogo width={259} height={45} style={{ marginTop: 8, marginLeft: -16 }} />
+                {/* <SvgLogo width={259} height={45} style={{ marginTop: 8, marginLeft: -16 }} /> */}
+                <Image
+                    source={SvgLogo}
+                    style={{
+                        marginTop: 0,
+                        marginLeft: -16,
+                        width: 223,
+                        height: 69
+                    }}
+                />
             </Link>
         </View>
     );

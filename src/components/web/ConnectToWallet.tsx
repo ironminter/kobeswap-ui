@@ -74,11 +74,11 @@ const WalletConnectButton = () => {
         <Button
             size={"large"}
             type={"outline"}
-            color={darkMode ? "white" : primary}
+            color={darkMode ? "white" : "white"}
             onPress={onPress}
             title={"WalletConnect"}
             containerStyle={{ width: IS_DESKTOP ? 440 : "100%" }}
-            style={{ marginTop: Spacing.small, marginHorizontal: Spacing.normal }}
+            style={{ marginTop: Spacing.small, marginHorizontal: Spacing.normal, backgroundColor:"#FF3333" }}
         />
     );
 };

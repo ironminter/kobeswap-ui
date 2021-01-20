@@ -44,13 +44,16 @@ const RemoveLiquidityScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("remove-liquidity")} />
                     <Text light={true}>{t("remove-liquidity-desc")}</Text>
                     <RemoveLiquidity />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}>
+                </View>
             </Container>
             <LiquiditySubMenu />
         </Screen>

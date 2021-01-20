@@ -25,6 +25,9 @@ const ALCHEMY_URL = "https://dashboard.alchemyapi.io/signup?referral=429fb682-0d
 const WebFooter = ({ simple = false }) => {
     const onPressAlchemy = useLinker(ALCHEMY_URL, "", "_blank");
     const { header, borderDark } = useColors();
+
+    const image = { uri: require("../../../assets/cattle-1.png") };
+
     return (
         <View style={{
             width: "100%",
@@ -48,14 +51,25 @@ const WebFooter = ({ simple = false }) => {
             <Text note={true} style={{ marginTop: Spacing.tiny }}>
                 Built with ❤️ by KobeSwap (v{Constants.manifest.version})
             </Text>
-            <FlexView style={{ marginTop: Spacing.small }}>
+            {/* <FlexView style={{ marginTop: Spacing.small }}>
                 <Flag name={"us"} locale={"en"} />
                 <Flag name={"es"} locale={"es"} />
                 <Flag name={"fr"} locale={"fr"} />
                 <Flag name={"cn"} locale={"zh"} />
                 <Flag name={"jp"} locale={"jp"} />
                 <Flag name={"kr"} locale={"ko"} />
-            </FlexView>
+            </FlexView> */}
+            <Image
+                source={image}
+                onError={() => {}}
+                style={{
+                    position: "absolute",
+                    top: -257,
+                    right: -50,
+                    width: 430,
+                    height: 300
+                }}
+            />
         </View>
     );
 };
