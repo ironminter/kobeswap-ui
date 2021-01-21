@@ -31,7 +31,7 @@ const WebFooter = ({ simple = false }) => {
     return (
         <View style={{
             width: "100%",
-            padding: Spacing.normal,
+            padding: Spacing.small,
             alignItems: "center",
             position: "fixed",
             bottom: 0,
@@ -64,7 +64,7 @@ const WebFooter = ({ simple = false }) => {
                 onError={() => {}}
                 style={{
                     position: "absolute",
-                    top: -257,
+                    top: -256,
                     right: -50,
                     width: 430,
                     height: 300

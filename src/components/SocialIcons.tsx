@@ -6,15 +6,25 @@ import useColors from "../hooks/useColors";
 import useLinker from "../hooks/useLinker";
 import FlexView from "./FlexView";
 
+import { Image, TouchableOpacity, TouchableHighlight, View, Linking } from "react-native";
+
 const SocialIcons = () => {
     const { darkMode } = useContext(GlobalContext);
     const { background, textLight } = useColors();
     const onPressTwitter = useLinker("https://twitter.com/sushiswap", "", "_blank");
     const onPressGithub = useLinker("https://github.com/sushiswap", "", "_blank");
     const onPressDiscord = useLinker("https://discord.gg/YS8xH7E", "", "_blank");
+
+    const icon1_1 = { uri: require("../../assets/icon1_1.png") };
+    const icon1_2 = { uri: require("../../assets/icon1_2.png") };
+    const icon2_1 = { uri: require("../../assets/icon2_1.png") };
+    const icon2_2 = { uri: require("../../assets/icon2_2.png") };
+    const icon3_1 = { uri: require("../../assets/icon3_1.png") };
+    const icon3_2 = { uri: require("../../assets/icon3_2.png") };
+
     return (
         <FlexView style={{ width: "100%", justifyContent: "center" }}>
-            <SocialIcon type="github-alt" onPress={onPressGithub} />
+            {/* <SocialIcon type="github-alt" onPress={onPressGithub} />
             <SocialIcon type="twitter" onPress={onPressTwitter} />
             <Icon
                 type={"material-community"}
@@ -29,7 +39,23 @@ const SocialIcons = () => {
                     borderColor: darkMode ? "white" : textLight
                 }}
                 onPress={onPressDiscord}
-            />
+            /> */}
+
+            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("https://github.com/sushiswap");}}>
+                <Image style={{ height: 32, width: 34 }}
+                    source={darkMode ? icon1_2 : icon1_1}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("https://twitter.com/sushiswap");}}>
+                <Image style={{ height: 33, width: 32 }}
+                    source={darkMode ? icon2_2 : icon2_1}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("https://discord.gg/YS8xH7E");}}>
+                <Image style={{ height: 33, width: 30 }}
+                    source={darkMode ? icon3_2 : icon3_1}
+                />
+            </TouchableOpacity>
         </FlexView>
     );
 };
