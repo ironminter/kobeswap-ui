@@ -1,5 +1,5 @@
-import React from "react";
-import { Image, TouchableHighlight, View } from "react-native";
+import React, {useState} from "react";
+import { Image, TouchableOpacity, TouchableHighlight, View } from "react-native";
 import { useHistory, useLocation } from "react-router-dom";
 
 import Constants from "expo-constants";
@@ -25,8 +25,6 @@ const ALCHEMY_URL = "https://dashboard.alchemyapi.io/signup?referral=429fb682-0d
 const WebFooter = ({ simple = false }) => {
     const onPressAlchemy = useLinker(ALCHEMY_URL, "", "_blank");
     const { header, borderDark } = useColors();
-
-    const image = { uri: require("../../../assets/cattle-1.png") };
 
     return (
         <View style={{
@@ -59,17 +57,9 @@ const WebFooter = ({ simple = false }) => {
                 <Flag name={"jp"} locale={"jp"} />
                 <Flag name={"kr"} locale={"ko"} />
             </FlexView> */}
-            <Image
-                source={image}
-                onError={() => {}}
-                style={{
-                    position: "absolute",
-                    top: -256,
-                    right: -50,
-                    width: 430,
-                    height: 300
-                }}
-            />
+
+            <Cattle/>
+
         </View>
     );
 };
@@ -86,5 +76,29 @@ const Flag = ({ name, locale }) => {
         </TouchableHighlight>
     );
 };
+
+const Cattle = () => {
+    const [isHover, setIsHover] = useState({ uri: require("../../../assets/cattle-1.png") });
+
+    return (
+        <div style={{
+                position: "absolute",
+                top: -256,
+                right: -50,
+                width: 430,
+                height: 300,
+            }} onMouseOver={() => {setIsHover({ uri: require("../../../assets/cattle-2.png") })}}
+            onMouseOut={() => {setIsHover({ uri: require("../../../assets/cattle-1.png") })}}>
+                <Image
+                    source={isHover}
+                    onError={() => { }}
+                    style={{
+                        width: 430,
+                        height: 300
+                    }}
+                />
+            </div>
+    );
+}
 
 export default WebFooter;
