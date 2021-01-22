@@ -19,7 +19,7 @@ const ConnectWallet = () => {
             : require("../../../assets/metamask.png")
         : require("../../../assets/sushiswap.jpg");
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:"#FFFFFF" }}>
             <Image
                 source={source}
                 style={{ width: metaMask ? 223 : 200, height: metaMask ? 183 : 200, marginBottom: Spacing.normal }}

@@ -30,13 +30,15 @@ const UnstakeScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("unstake")} />
                     <Text light={true}>{t("unstake-desc")}</Text>
                     <Staking />
                 </Content>
-                {Platform.OS === "web" && <WebFooter />}
+                {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                <View style={{ height: 200, padding: 20 }}></View>
             </Container>
             <StakingSubMenu />
         </Screen>

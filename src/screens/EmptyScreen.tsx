@@ -13,7 +13,7 @@ const EmptyScreen = () => {
     return (
         <Screen>
             <Container>
-                <BackgroundImage />
+                {/* <BackgroundImage /> */}
                 <Content>
                     <Title text={t("loading")} />
                 </Content>

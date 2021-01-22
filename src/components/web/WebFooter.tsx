@@ -26,6 +26,8 @@ const WebFooter = ({ simple = false }) => {
     const onPressAlchemy = useLinker(ALCHEMY_URL, "", "_blank");
     const { header, borderDark } = useColors();
 
+    const metaMask = window.ethereum?.isMetaMask || false;
+
     return (
         <View style={{
             width: "100%",
@@ -58,7 +60,7 @@ const WebFooter = ({ simple = false }) => {
                 <Flag name={"kr"} locale={"ko"} />
             </FlexView> */}
 
-            <Cattle/>
+            metaMask ? <Cattle/>
 
         </View>
     );

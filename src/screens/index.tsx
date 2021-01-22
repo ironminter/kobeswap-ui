@@ -101,9 +101,9 @@ const WebScreens = () => {
                             <Redirect to={"/"} />
                         </Switch>
                     </Suspense>
-                    <View style={{height: 200}}>
+                    {/* <View style={{height: 104}}>
 
-                    </View>
+                    </View> */}
                     <WebHeader onExpandMenu={() => setMenuExpanded(true)} />
                 </ImageBackground>
                 {/* </Container> */}
