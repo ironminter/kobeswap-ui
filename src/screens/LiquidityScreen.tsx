@@ -28,7 +28,7 @@ import UnsupportedButton from "../components/UnsupportedButton";
 import WebFooter from "../components/web/WebFooter";
 import { LiquiditySubMenu } from "../components/web/WebSubMenu";
 import { ROUTER, ZAP_IN } from "../constants/contracts";
-import { Spacing } from "../constants/dimension";
+import { IS_DESKTOP, Spacing } from "../constants/dimension";
 import Fraction from "../constants/Fraction";
 import { EthersContext } from "../context/EthersContext";
 import useAddLiquidityState, { AddLiquidityMode, AddLiquidityState } from "../hooks/useAddLiquidityState";
@@ -53,6 +53,8 @@ const LiquidityScreen = () => {
                     <AddLiquidity />
                 </Content>
                 {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                {!IS_DESKTOP && <WebFooter />}
 
                 <View style={{ height: 200, padding: 20 }}>
                 </View>

@@ -46,6 +46,8 @@ const HarvestScreen = () => {
                 </Content>
                 {/* {Platform.OS === "web" && <WebFooter />} */}
 
+                {!IS_DESKTOP && <WebFooter />}
+
                 <View style={{ height: 200, padding: 20 }}></View>
             </Container>
             <FarmingSubMenu />
