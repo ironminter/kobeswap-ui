@@ -9,6 +9,7 @@ import useColors from "../../hooks/useColors";
 import useTranslation from "../../hooks/useTranslation";
 import Button from "../Button";
 import WebFooter from "./WebFooter";
+import Content from "../Content";
 
 const ConnectWallet = () => {
     const { darkMode } = useContext(GlobalContext);
@@ -20,15 +21,17 @@ const ConnectWallet = () => {
             : require("../../../assets/metamask.png")
         : require("../../../assets/sushiswap.jpg");
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:background }}>
-            <Image
-                source={source}
-                style={{ width: metaMask ? 223 : 200, height: metaMask ? 183 : 200, marginBottom: Spacing.normal }}
-            />
-            {window.ethereum && <ConnectButton />}
-            <WalletConnectButton />
-            {!IS_DESKTOP && <WebFooter simple={true} />}
-        </View>
+        <Content>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <Image
+                    source={source}
+                    style={{ width: metaMask ? 223 : 200, height: metaMask ? 183 : 200, marginBottom: Spacing.normal }}
+                />
+                {window.ethereum && <ConnectButton />}
+                <WalletConnectButton />
+                {!IS_DESKTOP && <WebFooter simple={true} />}
+            </View>
+        </Content>
     );
 };
 
