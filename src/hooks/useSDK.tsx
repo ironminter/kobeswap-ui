@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 
-import { Currency, CurrencyAmount, Fetcher, Pair, TokenAmount, Trade } from "@sushiswap/sdk";
+import { Currency, CurrencyAmount, Fetcher, Pair, TokenAmount, Trade } from "@iwanwang/sdk";
 import { ethers } from "ethers";
 import { EthersContext } from "../context/EthersContext";
 import Token from "../types/Token";
@@ -24,6 +24,7 @@ const useSDK = () => {
                 const from = convertToken(fromToken);
                 const to = isETH(toToken) ? Currency.ETHER : convertToken(toToken);
                 const pairs = await loadAllCommonPairs(from, to, provider);
+                console.log("-----pairs : " + pairs);
                 const amount = eth
                     ? CurrencyAmount.ether(fromAmount.toString())
                     : new TokenAmount(from, fromAmount.toString());

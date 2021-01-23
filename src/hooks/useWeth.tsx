@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { WETH } from "@sushiswap/sdk";
+import { WETH } from "@iwanwang/sdk";
 import { ethers } from "ethers";
 import { getContract } from "../utils";
 import { logTransaction } from "../utils/analytics-utils";

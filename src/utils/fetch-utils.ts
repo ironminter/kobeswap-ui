@@ -1,8 +1,8 @@
-import { FACTORY_ADDRESS as SUSHISWAP_FACTORY, Pair } from "@sushiswap/sdk";
+import { /*FACTORY_ADDRESS as SUSHISWAP_FACTORY,*/ Pair } from "@iwanwang/sdk";
 import sushiData from "@sushiswap/sushi-data";
 import { FACTORY_ADDRESS as UNISWAP_FACTORY } from "@uniswap/sdk";
 import { ethers } from "ethers";
-import { LP_TOKEN_SCANNER, MASTER_CHEF, ORDER_BOOK, SETTLEMENT } from "../constants/contracts";
+import { LP_TOKEN_SCANNER, MASTER_CHEF, ORDER_BOOK, SETTLEMENT, SUSHISWAP_FACTORY } from "../constants/contracts";
 import Fraction from "../constants/Fraction";
 import { ETH } from "../constants/tokens";
 import { ALCHEMY_PROVIDER } from "../context/EthersContext";
@@ -214,6 +214,9 @@ const fetchLPTokens = async (
     tokens: Token[],
     provider: ethers.providers.JsonRpcProvider
 ) => {
+    console.log("-----factory : " + factory);
+    console.log("-----scanner : " + LP_TOKEN_SCANNER);
+    console.log("-----my addr : " + account);
     const factoryContract = getContract("IUniswapV2Factory", factory, provider);
     const length = await factoryContract.allPairsLength();
     const scanner = getContract("LPTokenScanner", LP_TOKEN_SCANNER, provider);

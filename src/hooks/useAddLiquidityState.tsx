@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
-import { Pair } from "@sushiswap/sdk";
+import { Pair } from "@iwanwang/sdk";
 import { EthersContext } from "../context/EthersContext";
 import { convertToken, isETH, parseBalance } from "../utils";
 import useDelayedOnBlockEffect from "./useDelayedOnBlockEffect";
@@ -67,24 +67,29 @@ const useAddLiquidityState: () => AddLiquidityState = () => {
     );
 
     const onAdd = useCallback(async () => {
+        console.log("-----addLP - 1");
         if (state.fromToken && state.toToken && state.fromAmount && state.toAmount && provider && signer) {
             setAdding(true);
             try {
+                console.log("-----addLP - 2");
                 const fromAmount = parseBalance(state.fromAmount, state.fromToken.decimals);
                 const toAmount = parseBalance(state.toAmount, state.toToken.decimals);
                 if (mode === "zapper") {
                     const tx = await zapIn(state.fromToken, state.toToken, fromAmount, provider, signer);
                     await tx.wait();
                 } else if (isETH(state.fromToken) || isETH(state.toToken)) {
+                    console.log("-----addLP - 3");
                     const [token, amount, amountETH] = isETH(state.fromToken)
                         ? [state.toToken, toAmount, fromAmount]
                         : [state.fromToken, fromAmount, toAmount];
                     const tx = await addLiquidityETH(token, amount, amountETH, signer);
                     await tx.wait();
                 } else {
+                    console.log("-----addLP - 4");
                     const tx = await addLiquidity(state.fromToken, state.toToken, fromAmount, toAmount, signer);
                     await tx.wait();
                 }
+                console.log("-----addLP - 5");
                 await updateTokens();
                 state.setFromSymbol("");
             } finally {
@@ -92,7 +97,7 @@ const useAddLiquidityState: () => AddLiquidityState = () => {
             }
         }
     }, [state.fromToken, state.toToken, state.fromAmount, state.toAmount, provider, signer]);
-
+    console.log("-----addLP - 6");
     return {
         ...state,
         loading: loading || state.loading,

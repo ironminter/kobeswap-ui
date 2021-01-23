@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { Percent, Router, Trade } from "@sushiswap/sdk";
+import { Percent, Router, Trade } from "@iwanwang/sdk";
 import { ethers } from "ethers";
 import { ROUTER } from "../constants/contracts";
 import Token from "../types/Token";
@@ -52,14 +52,17 @@ const useSwapRouter = () => {
         ) => {
             const router = getContract("IUniswapV2Router02", ROUTER, signer);
             const deadline = `0x${(Math.floor(new Date().getTime() / 1000) + ttl).toString(16)}`;
+            const fromAmount_min = deduct(fromAmount, allowedSlippage);
+            const toAmount_min = deduct(toAmount, allowedSlippage);
+            const signerAddr = await signer.getAddress();
             const args = [
                 fromToken.address,
                 toToken.address,
                 fromAmount,
                 toAmount,
-                deduct(fromAmount, allowedSlippage),
-                deduct(toAmount, allowedSlippage),
-                await signer.getAddress(),
+                fromAmount_min,
+                toAmount_min,
+                signerAddr,
                 deadline
             ];
             const gasLimit = await router.estimateGas.addLiquidity(...args);
@@ -131,12 +134,15 @@ const useSwapRouter = () => {
         async (token: Token, amount: ethers.BigNumber, amountETH: ethers.BigNumber, signer: ethers.Signer) => {
             const router = getContract("IUniswapV2Router02", ROUTER, signer);
             const deadline = `0x${(Math.floor(new Date().getTime() / 1000) + ttl).toString(16)}`;
+            const amount_min = deduct(amount, allowedSlippage);
+            const amountEth_min = deduct(amountETH, allowedSlippage);
+            const signer_addr = await signer.getAddress();
             const args = [
                 token.address,
                 amount,
-                deduct(amount, allowedSlippage),
-                deduct(amountETH, allowedSlippage),
-                await signer.getAddress(),
+                amount_min,
+                amountEth_min,
+                signer_addr,
                 deadline
             ];
             const gasLimit = await router.estimateGas.addLiquidityETH(...args, {

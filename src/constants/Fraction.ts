@@ -1,4 +1,4 @@
-import { Fraction as SDKFraction } from "@sushiswap/sdk";
+import { Fraction as SDKFraction } from "@iwanwang/sdk";
 import { ethers } from "ethers";
 import Token from "../types/Token";
 import { formatBalance, isEmptyValue, parseBalance } from "../utils";

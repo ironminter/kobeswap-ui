@@ -1,4 +1,4 @@
-import { ChainId, CurrencyAmount, Percent, Token as SDKToken, TokenAmount, WETH } from "@sushiswap/sdk";
+import { ChainId, CurrencyAmount, Percent, Token as SDKToken, TokenAmount, WETH } from "@iwanwang/sdk";
 import { ethers } from "ethers";
 import { ETH } from "../constants/tokens";
 import Token from "../types/Token";

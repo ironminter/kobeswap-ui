@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
-import { Trade } from "@sushiswap/sdk";
+import { Trade } from "@iwanwang/sdk";
 import { Fetcher, Token, WETH } from "@uniswap/sdk";
 import { ethers } from "ethers";
 import useAsyncEffect from "use-async-effect";
@@ -102,6 +102,8 @@ const useSwapState: () => SwapState = () => {
                 if (!amount.isZero()) {
                     setUnsupported(false);
                     try {
+                        console.log("---------setTrade");
+                        console.log("--------- from : " + typeof(state.fromToken) + ", to : " + typeof(state.toToken) + ", amount : " + typeof(amount) + ", provider : " + typeof(provider));
                         setTrade(await getTrade(state.fromToken, state.toToken, amount, provider));
                     } catch (e) {
                         setUnsupported(true);
