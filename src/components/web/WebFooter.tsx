@@ -35,7 +35,7 @@ const WebFooter = ({ simple = false }) => {
             alignItems: "center",
             position: IS_DESKTOP ? "fixed" : "",
             bottom: 0,
-            backgroundColor: header
+            backgroundColor: IS_DESKTOP ? header : "transparent"
         }}>
             {!simple && (
                 <>
