@@ -22,7 +22,7 @@ import TokenInput from "../components/TokenInput";
 import WebFooter from "../components/web/WebFooter";
 import { MigrateSubMenu } from "../components/web/WebSubMenu";
 import { SUSHI_ROLL } from "../constants/contracts";
-import { Spacing } from "../constants/dimension";
+import { IS_DESKTOP, Spacing } from "../constants/dimension";
 import { EthersContext } from "../context/EthersContext";
 import useLinker from "../hooks/useLinker";
 import useMigrateState, { MigrateMode, MigrateState } from "../hooks/useMigrateState";
@@ -43,6 +43,8 @@ const MigrateScreen = () => {
                     <Migrate />
                 </Content>
                 {/* {Platform.OS === "web" && <WebFooter />} */}
+
+                {!IS_DESKTOP && <WebFooter />}
 
                 <View style={{ height: 200, padding: 20 }}>
                 </View>
