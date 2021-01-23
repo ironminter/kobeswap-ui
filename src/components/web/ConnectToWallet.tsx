@@ -13,13 +13,14 @@ import WebFooter from "./WebFooter";
 const ConnectWallet = () => {
     const { darkMode } = useContext(GlobalContext);
     const metaMask = window.ethereum?.isMetaMask || false;
+    const { background } = useColors();
     const source = metaMask
         ? darkMode
             ? require("../../../assets/metamask-dark.png")
             : require("../../../assets/metamask.png")
         : require("../../../assets/sushiswap.jpg");
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:"#FFFFFF" }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor:background }}>
             <Image
                 source={source}
                 style={{ width: metaMask ? 223 : 200, height: metaMask ? 183 : 200, marginBottom: Spacing.normal }}
