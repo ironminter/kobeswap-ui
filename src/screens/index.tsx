@@ -101,14 +101,12 @@ const WebScreens = () => {
                             <Redirect to={"/"} />
                         </Switch>
                     </Suspense>
-                    {/* <View style={{height: 104}}>
-
-                    </View> */}
+                    
                     <WebHeader onExpandMenu={() => setMenuExpanded(true)} />
                 </ImageBackground>
                 {/* </Container> */}
 
-                {Platform.OS === "web" && <WebFooter />}
+                {IS_DESKTOP && <WebFooter />}
 
                 {!IS_DESKTOP && <MobileWebMenu expanded={menuExpanded} onCollapse={() => setMenuExpanded(false)} />}
             </View>

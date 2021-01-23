@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import Constants from "expo-constants";
 
-import { Spacing } from "../../constants/dimension";
+import { Spacing, IS_DESKTOP } from "../../constants/dimension";
 import useLinker from "../../hooks/useLinker";
 import FlexView from "../FlexView";
 import SocialIcons from "../SocialIcons";
@@ -33,7 +33,7 @@ const WebFooter = ({ simple = false }) => {
             width: "100%",
             padding: Spacing.small,
             alignItems: "center",
-            position: "fixed",
+            position: IS_DESKTOP ? "fixed" : "",
             bottom: 0,
             backgroundColor: header
         }}>
@@ -48,19 +48,19 @@ const WebFooter = ({ simple = false }) => {
                     </TouchableHighlight> */}
                 </>
             )}
-            <Text note={true} style={{ marginTop: Spacing.tiny }}>
+            {/* <Text note={true} style={{ marginTop: Spacing.tiny }}>
                 Built with ❤️ by KobeSwap (v{Constants.manifest.version})
-            </Text>
-            {/* <FlexView style={{ marginTop: Spacing.small }}>
+            </Text> */}
+            <FlexView style={{ marginTop: Spacing.small }}>
                 <Flag name={"us"} locale={"en"} />
                 <Flag name={"es"} locale={"es"} />
                 <Flag name={"fr"} locale={"fr"} />
                 <Flag name={"cn"} locale={"zh"} />
                 <Flag name={"jp"} locale={"jp"} />
                 <Flag name={"kr"} locale={"ko"} />
-            </FlexView> */}
+            </FlexView>
 
-            metaMask ? <Cattle/>
+            {IS_DESKTOP && <Cattle/>}
 
         </View>
     );
