@@ -97,7 +97,7 @@ const OrderTypeSelect = ({ state }: { state: SwapState }) => {
     const t = useTranslation();
     const options: Option[] = [
         { key: "market", title: t("market-order"), description: t("market-order-desc") },
-        // { key: "limit", title: t("limit-order"), description: t("limit-order-desc") }
+        { key: "limit", title: t("limit-order"), description: t("limit-order-desc") }
     ];
     return (
         <View>
