@@ -41,17 +41,17 @@ const SocialIcons = () => {
                 onPress={onPressDiscord}
             /> */}
 
-            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("https://github.com/ironminter/shabushabu");}}>
+            <TouchableOpacity style={{width: 45}} onPress={() => {window.open("https://github.com/ironminter/shabushabu");}}>
                 <Image style={{ height: 32, width: 34 }}
                     source={darkMode ? icon1_2 : icon1_1}
                 />
             </TouchableOpacity>
-            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("Https://twitter.com/shabufinance");}}>
+            <TouchableOpacity style={{width: 45}} onPress={() => {window.open("Https://twitter.com/shabufinance");}}>
                 <Image style={{ height: 33, width: 32 }}
                     source={darkMode ? icon2_2 : icon2_1}
                 />
             </TouchableOpacity>
-            <TouchableOpacity style={{padding: 10}} onPress={() => {window.open("https://medium.com/@shabushabu");}}>
+            <TouchableOpacity style={{width: 45}} onPress={() => {window.open("https://medium.com/@shabushabu");}}>
                 <Image style={{ height: 33, width: 30 }}
                     source={darkMode ? icon3_2 : icon3_1}
                 />
