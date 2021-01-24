@@ -89,8 +89,7 @@ const HomeScreen = () => {
 
                 {!IS_DESKTOP && <WebFooter />}
 
-                <View style={{ height: 200, padding: 20 }}>
-                </View>
+                {IS_DESKTOP && <View style={{ height: 200, padding: 20 }}></View>}
             </Container>
         </Screen>
     );
@@ -103,7 +102,7 @@ const Home = ({ state }: { state: HomeState }) => {
             <View style={{ height: Spacing.large }} />
             <MyLPTokens state={state} />
             <View style={{ height: Spacing.large }} />
-            <Pools state={state} />
+            {/* <Pools state={state} /> */}
         </View>
     );
 };

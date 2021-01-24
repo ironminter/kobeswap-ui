@@ -56,8 +56,7 @@ const LiquidityScreen = () => {
 
                 {!IS_DESKTOP && <WebFooter />}
 
-                <View style={{ height: 200, padding: 20 }}>
-                </View>
+                {IS_DESKTOP && <View style={{ height: 200, padding: 20 }}></View>}
             </Container>
             <LiquiditySubMenu />
         </Screen>
