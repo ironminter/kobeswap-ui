@@ -74,7 +74,7 @@ const SushiBalance = ({ state }: { state: StakingState }) => {
             <Heading text={t("your-sushi")} />
             <AmountMeta
                 amount={state.sushi ? formatBalance(state.sushi.balance, state.sushi.decimals) : ""}
-                suffix={"SUSHI"}
+                suffix={"A5"}
             />
         </View>
     );
@@ -122,7 +122,7 @@ const StakeInfo = ({ state }: { state: StakingState }) => {
         <InfoBox>
             <AmountMeta
                 amount={xSushiAmount ? formatBalance(xSushiAmount, state.xSushi!.decimals, 8) : ""}
-                suffix={"xSUSHI"}
+                suffix={"xA5"}
                 disabled={disabled}
             />
             <Meta label={t("xsushi-share")} text={share} suffix={"%"} disabled={disabled} />

@@ -1,5 +1,5 @@
-# SushiSwap Lite
-Expo App for https://lite.sushiswap.fi
+# KobeSwap
+Expo App for https://www.kobeswap.org/
 
 ## License
 MIT

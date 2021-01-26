@@ -44,8 +44,8 @@ const useStakingState: () => StakingState = () => {
     const [entering, setEntering] = useState(false);
     const [leaving, setLeaving] = useState(false);
 
-    const sushi = useMemo(() => tokens.find(token => token.symbol === "SUSHI"), [tokens]);
-    const xSushi = useMemo(() => tokens.find(token => token.symbol === "xSUSHI"), [tokens]);
+    const sushi = useMemo(() => tokens.find(token => token.symbol === "A5"), [tokens]);
+    const xSushi = useMemo(() => tokens.find(token => token.symbol === "xA5"), [tokens]);
 
     useEffect(() => {
         setAmount("");
