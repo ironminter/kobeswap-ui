@@ -71,7 +71,7 @@ export const Title = () => {
                         marginTop: 0,
                         marginLeft: -16,
                         width: 223,
-                        height: 69
+                        height: 60
                     }}
                 />
             </Link>
