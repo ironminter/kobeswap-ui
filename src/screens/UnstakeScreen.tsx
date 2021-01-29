@@ -70,7 +70,7 @@ const XSushiBalance = ({ state }: { state: StakingState }) => {
             <Heading text={t("your-xsushi")} />
             <AmountMeta
                 amount={state.xSushi ? formatBalance(state.xSushi.balance, state.xSushi.decimals) : ""}
-                suffix={"xSUSHI"}
+                suffix={"xA5"}
             />
         </View>
     );
@@ -106,7 +106,7 @@ const UnstakeInfo = ({ state }: { state: StakingState }) => {
         <InfoBox>
             <AmountMeta
                 amount={sushiAmount ? formatBalance(sushiAmount, state.sushi!.decimals, 8) : ""}
-                suffix={"SUSHI"}
+                suffix={"A5"}
                 disabled={disabled}
             />
             <Controls state={state} />

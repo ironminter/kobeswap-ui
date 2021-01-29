@@ -199,7 +199,8 @@ const TokenItem = (props: TokenItemProps) => {
                     {IS_DESKTOP && <TokenSymbol token={props.token} disabled={props.disabled} />}
                 </FlexView>
             </View>
-            <ExternalIcon path={"/tokens/" + props.token.address} />
+            {/* <ExternalIcon path={"/tokens/" + props.token.address} /> */}
+            <ExternalIcon path={"/token/" + props.token.address} />
         </FlexView>
     );
 };
@@ -218,14 +219,16 @@ const LPTokenItem = (props: LPTokenItemProps) => {
                     <TokenAmount token={props.token} amount={props.token.amountDeposited} disabled={props.disabled} />
                 </FlexView>
             </View>
-            <ExternalIcon path={"/pairs/" + props.token.address} />
+            {/* <ExternalIcon path={"/pairs/" + props.token.address} /> */}
+            <ExternalIcon path={"/address/" + props.token.address} />
         </FlexView>
     );
 };
 
 const ExternalIcon = ({ path }) => {
     const { textDark, disabled } = useColors();
-    const onPress = () => window.open("https://sushiswapanalytics.com/" + path.toLowerCase(), "_blank");
+    //const onPress = () => window.open("https://sushiswapanalytics.com/" + path.toLowerCase(), "_blank");  // next
+    const onPress = () => window.open("https://etherscan.io/" + path.toLowerCase(), "_blank");
     const isETH = path.endsWith(ethers.constants.AddressZero);
     return (
         <TouchableHighlight onPress={onPress} disabled={isETH}>

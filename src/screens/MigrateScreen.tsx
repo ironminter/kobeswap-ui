@@ -130,7 +130,7 @@ const AmountInfo = ({ state }: { state: MigrateState }) => {
     const disabled = !state.selectedLPToken || isEmptyValue(state.amount);
     return (
         <InfoBox>
-            <Meta label={state.selectedLPToken?.symbol || "SushiSwap LP"} text={state.amount} disabled={disabled} />
+            <Meta label={state.selectedLPToken?.symbol || "KobeSwap LP"} text={state.amount} disabled={disabled} />
             <Controls state={state} />
         </InfoBox>
     );

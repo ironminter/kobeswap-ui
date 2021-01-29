@@ -133,7 +133,7 @@ const WithdrawInfo = ({ state }: { state: FarmingState }) => {
         <InfoBox>
             <AmountMeta
                 amount={sushi ? formatBalance(sushi) : ""}
-                suffix={"SUSHI"}
+                suffix={"A5"}
                 disabled={disabled || isEmptyValue(state.amount)}
             />
             <Meta label={t("deposited-lp-token")} text={total ? formatBalance(total) : ""} disabled={disabled} />

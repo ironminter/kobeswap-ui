@@ -6,6 +6,6 @@ export const ETH: Token = {
     address: ethers.constants.AddressZero,
     decimals: 18,
     symbol: "ETH",
-    logoURI: "https://lite.sushiswap.fi/images/tokens/ETH.png",
+    logoURI: "https://www.kobeswap.org/images/tokens/ETH.png",
     balance: ethers.BigNumber.from(0)
 };
