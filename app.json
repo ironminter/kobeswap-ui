@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "KobeSwap",
-    "slug": "sushiswap-app",
+    "slug": "kobeswap-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,14 +23,14 @@
       "favicon": "./assets/icon.png",
       "config": {
         "firebase": {
-          "apiKey": "AIzaSyANcyrmKaNPrM3QuRR17eA5a6iIDYt4NfQ",
-          "authDomain": "sushiswap-levx.firebaseapp.com",
-          "databaseURL": "https://sushiswap-levx.firebaseio.com",
-          "projectId": "sushiswap-levx",
-          "storageBucket": "sushiswap-levx.appspot.com",
-          "messagingSenderId": "967519785649",
-          "appId": "1:967519785649:web:131c698ed8aa881bdd8890",
-          "measurementId": "G-T98X3TB4HC"
+          "apiKey": "AIzaSyAh_0AHNjoTDLTsTMXV-kZmed1Detw2RDk",
+          "authDomain": "kobeswap.firebaseapp.com",
+          "databaseURL": "https://kobeswap-default-rtdb.firebaseio.com",
+          "projectId": "kobeswap",
+          "storageBucket": "kobeswap.appspot.com",
+          "messagingSenderId": "316788333356",
+          "appId": "1:316788333356:web:6ff1e182862e3d3470aa89",
+          "measurementId": "G-S7L8M1YBH8"
         }
       }
     }

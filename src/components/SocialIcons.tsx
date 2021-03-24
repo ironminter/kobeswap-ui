@@ -11,9 +11,9 @@ import { Image, TouchableOpacity, TouchableHighlight, View, Linking } from "reac
 const SocialIcons = () => {
     const { darkMode } = useContext(GlobalContext);
     const { background, textLight } = useColors();
-    const onPressTwitter = useLinker("https://twitter.com/sushiswap", "", "_blank");
-    const onPressGithub = useLinker("https://github.com/sushiswap", "", "_blank");
-    const onPressDiscord = useLinker("https://discord.gg/YS8xH7E", "", "_blank");
+    const onPressTwitter = useLinker("https://twitter.com/shabufinance", "", "_blank");
+    const onPressGithub = useLinker("https://github.com/ironminter", "", "_blank");
+    const onPressDiscord = useLinker("https://medium.com/@shabushabu", "", "_blank");
 
     const icon1_1 = { uri: require("../../assets/icon1_1.png") };
     const icon1_2 = { uri: require("../../assets/icon1_2.png") };
